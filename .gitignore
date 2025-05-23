@@ -1,0 +1,41 @@
+# Environment variables
+.env
+
+# Papers directory (PDFs)
+papers/*
+!papers/.gitkeep  # Optional: Keep empty directory structure
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Database or cache
+*.sqlite3
+*.cache
+
+# macOS
+.DS_Store
+#pdf
+*.pdf
