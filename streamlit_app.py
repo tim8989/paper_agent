@@ -5,9 +5,9 @@ from src.nlp import NLPProcessor
 from src.web_search import WebSearch
 from src.compare import PaperComparator
 from src.vector_store import VectorStore
+from src.memory_manager import MemoryManager
 from src.ui import render_agent_ui, render_upload_ui, render_download_ui
 import os
-
 def main():
     try:
         if not os.getenv("OPENAI_API_KEY"):
@@ -22,9 +22,10 @@ def main():
         nlp = NLPProcessor()
         web_search = WebSearch()
         comparator = PaperComparator()
-        vector_store = VectorStore()
-        render_agent_ui(db, nlp, web_search, comparator, vector_store)
-        render_upload_ui(db, processor)
+        vector_store = VectorStore(db)  # Pass Database instance
+        memory_manager = MemoryManager(db)  # Pass Database instance
+        render_agent_ui(db, nlp, web_search, comparator, vector_store, memory_manager)
+        render_upload_ui(db, processor, memory_manager)
         render_download_ui(db)
     except Exception as e:
         st.error(f"❌ 初始化失敗：{str(e)}")
